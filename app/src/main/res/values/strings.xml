@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Something Creative</string>
+
+    <string name="count">Count:</string>
+    <string name="run">Run</string>
+
+    <string name="fileSaveDirectoryPathKey">fileSaveDirectoryPathKey</string>
+    <string name="noSharedPrefKeyFound">No Prefs</string>
+    <string name="noSaveDirectoryFound">No Save Directory Found</string>
+    <string name="saveDirectoryInvalid">Save Directory Invalid</string>
+    <string name="pleaseSelectASaveDirectory">"Please Select A Save Directory"</string>
+    <string name="fileName">FibonacciResults.txt</string>
+
+    <string name="FibonacciResultsGeneratedAndSavedSuccessfully">"Fibonacci Results Generated And Saved Successfully"</string>
+    <string name="ErrorSavingFileUnableToCreateFile">"Error saving file: Unable to create file"</string>
+    <string name="ErrorSavingFileUnableToWriteDataToFile">"Error saving file: Unable to write data to file"</string>
+
+</resources>
