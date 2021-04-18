@@ -58,9 +58,8 @@ public class FibonacciAlgorithm {
     }
 
     public static List<Integer> Run(int inMax){
-        List<Integer> resultsList = calculateTheNthValue(inMax);
-        //List<Integer> resultsList = calculateTheRankNForTheValueXIsLessThanN(inMax);
-        return resultsList;
+        return calculateTheNthValue(inMax);
+        //return calculateTheRankNForTheValueXIsLessThanN(inMax);
     }
     
 }

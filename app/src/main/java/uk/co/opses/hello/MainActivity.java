@@ -52,12 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //If there are results
                 if (results.size() > 0) {
-                    //Format results
 
-                    String outputMe = "";
-                    for (int i = 0; i < results.size(); i++)
-                        outputMe += results.get(i) + "\n";
-                    outputMe.substring(0, outputMe.length() - 2); //get rid of that last \n
+                    //Format results (add '\n' after each entry)
+                    String outputMe = formatResults(results);
 
                     //save results to the selected directory
                     saveToStorage(outputMe);
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         String path = sharedPref.getString(getString(R.string.fileSaveDirectoryPathKey), getString(R.string.noSharedPrefKeyFound));
 
         //If no path is found in shared prefs - request the user select one
-        if (path == getString(R.string.noSharedPrefKeyFound)) {
+        if (path.equals(getString(R.string.noSharedPrefKeyFound))) {
             //Log.d("sharedPref", "NO");
             Toast.makeText(MainActivity.this, getString(R.string.noSaveDirectoryFound), Toast.LENGTH_LONG).show();
             Toast.makeText(MainActivity.this, getString(R.string.pleaseSelectASaveDirectory), Toast.LENGTH_LONG).show();
@@ -142,6 +139,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //---
+
+    String formatResults(List<Integer> results){
+        String outputMe = "";
+        for (int i = 0; i < results.size(); i++)
+            outputMe += results.get(i) + "\n";
+        return outputMe.substring(0, outputMe.length() - 1); //get rid of that last \n
+    }
 
     //Save file to storage
     void saveToStorage(String fileContents) {
