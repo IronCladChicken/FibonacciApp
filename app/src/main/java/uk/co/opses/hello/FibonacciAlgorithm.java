@@ -2,17 +2,19 @@ package uk.co.opses.hello;
 
 import android.util.Log;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FibonacciAlgorithm {
 
-    private static List<Integer> calculateTheNthValue(int maxNumber){
+    //Note: Better example can be found here: https://www.nayuki.io/res/fast-fibonacci-algorithms/FastFibonacci.java
+    private static List<BigInteger> calculateTheNthValue(int maxNumber){
         // Set it to the number of elements you want in the Fibonacci Series
-        int previousNumber = 0;
-        int nextNumber = 1;
-
-        List<Integer> resultsList = new ArrayList<Integer>();
+        BigInteger previousNumber = BigInteger.valueOf(0);
+        BigInteger nextNumber = BigInteger.valueOf(1);
+        BigInteger sum;
+        List<BigInteger> resultsList = new ArrayList<>();
 
         for (int i = 1; i <= maxNumber; ++i)
         {
@@ -22,7 +24,7 @@ public class FibonacciAlgorithm {
              * to the first number and assigning the sum of last two
              * numbers to the second number
              */
-            int sum = previousNumber + nextNumber;
+            sum = previousNumber.add(nextNumber);
             previousNumber = nextNumber;
             nextNumber = sum;
         }
@@ -32,12 +34,13 @@ public class FibonacciAlgorithm {
         return resultsList;
     }
 
-    private static List<Integer> calculateTheRankNForTheValueXIsLessThanN(int maxNumber){
+    private static List<BigInteger> calculateTheRankNForTheValueXIsLessThanN(BigInteger maxNumber){
         // Set it to the number of elements you want in the Fibonacci Series
-        int previousNumber = 0;
-        int nextNumber = 1;
+        BigInteger previousNumber = BigInteger.valueOf(0);
+        BigInteger nextNumber = BigInteger.valueOf(1);
+        BigInteger sum;
 
-        List<Integer> resultsList = new ArrayList<Integer>();
+        List<BigInteger> resultsList = new ArrayList<>();
 
         do
         {
@@ -47,19 +50,19 @@ public class FibonacciAlgorithm {
              * to the first number and assigning the sum of last two
              * numbers to the second number
              */
-            int sum = previousNumber + nextNumber;
+            sum = previousNumber.add(nextNumber);
             previousNumber = nextNumber;
             nextNumber = sum;
-        } while(previousNumber<=maxNumber);
+        } while(previousNumber.compareTo(maxNumber) == -1);
 
         resultsList.add(previousNumber);
 
         return resultsList;
     }
 
-    public static List<Integer> Run(int inMax){
+    public static List<BigInteger> Run(int inMax){
         return calculateTheNthValue(inMax);
-        //return calculateTheRankNForTheValueXIsLessThanN(inMax);
+        //return calculateTheRankNForTheValueXIsLessThanN(BigInteger.valueOf(inMax));
     }
     
 }

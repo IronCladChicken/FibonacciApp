@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -32,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CheckFilePath();
+        checkFilePath();
 
     }
 
     public void buttonRun(View view) {
 
-        if (CheckFilePath()) { //Probably a needless extra check, but just in case there's been a change.
+        if (checkFilePath()) { //Probably a needless extra check, but just in case there's been a change.
 
             //Get data from the text field
             EditText editText = findViewById(R.id.editTextNumberDecimal);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             if (userValue.length() > 0) {
 
                 //Run the Fibonacci algorithm & store the returned results in a list.
-                List<Integer> results = FibonacciAlgorithm.Run(Integer.parseInt(userValue));
+                List<BigInteger> results = FibonacciAlgorithm.Run(Integer.parseInt(userValue));
 
                 //If there are results
                 if (results.size() > 0) {
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //Ensure selected path is correct (e.g. not a file)
-            CheckFilePath();
+            checkFilePath();
 
         }
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     //---
 
     //Manage file path....
-    public boolean CheckFilePath() {
+    public boolean checkFilePath() {
 
         boolean filePathValid = false;
 
@@ -140,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
     //---
 
-    String formatResults(List<Integer> results){
-        String outputMe = "";
+    String formatResults(List<BigInteger> results){
+        StringBuilder outputMe = new StringBuilder();
         for (int i = 0; i < results.size(); i++)
-            outputMe += results.get(i) + "\n";
+            outputMe.append(results.get(i) + "\n");
         return outputMe.substring(0, outputMe.length() - 1); //get rid of that last \n
     }
 
